@@ -1,5 +1,5 @@
-variable "access_key" { default = "AKIAVKD4IDQWHRYN7X6V" }
-variable "secret_key" { default = "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" }
+variable "access_key" { default = "" }
+variable "secret_key" { default = "" }
 variable "region" { default = "us-east-1" }
 
 variable "key_name" { default = "IOT" }
