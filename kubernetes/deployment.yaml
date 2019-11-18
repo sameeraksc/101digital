@@ -1,0 +1,31 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: SERVICENAME-deployment
+  namespace: NAMESPACE
+  labels:
+    name: SERVICENAME-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: SERVICENAME-deployment
+  template:
+    metadata:
+      labels:
+        name: SERVICENAME-deployment
+    spec:
+      volumes:
+      - name: logs-storage
+        persistentVolumeClaim:
+          claimName: logs-pvc-NAMESPACE
+      containers:
+      - name: SERVICENAME
+        image: IMAGENAME
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - mountPath: "/logs"
+          name: logs-storage
+          subPath: SERVICENAME
